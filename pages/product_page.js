@@ -7,7 +7,7 @@ export default function product_page(){
     return(
         <>
         <OrganismNav />
-        <center>
+        <center className="mt-20">
             <div className="row container mt-5">
                 <div className="col" style={{margin:'15px', justifyContent:'center', alignContent:'center',border:'0.2px solid white', borderRadius:'5px'}}>
                     <img src="/products/prod_big.jpg"></img>
@@ -26,7 +26,7 @@ export default function product_page(){
                 <div className="col text-left ml-5">
                     <AtomText value='Hamlin Cellyn Tas Ransel Wanita Japan Style Big Compartment' size='36px' weight='700'></AtomText>
                     <AtomText value='Stock: 50' size='18px' weight='400' color="#9D9D9D"></AtomText>
-                    <AtomText value="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged" size='14px' weight='400'></AtomText>
+                    <AtomText value="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged" size='14px' weight='400' margin='0px 0px 50px 0px'></AtomText>
                     <AtomButton value="Add to cart" background="#0086CF" color="white" border="1px solid #0086CF" radius="10px" padding="7px 12px 7px 12px"></AtomButton>
                 </div>
             </div>
