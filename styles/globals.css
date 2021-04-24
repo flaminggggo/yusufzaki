@@ -15,9 +15,9 @@ a {
   box-sizing: border-box;
 }
 
-.containerGambar {
-  width: 387px;
-  padding: 40px;
+.ctnGambar {
+  width: 475px;
+  padding: 75px;
   margin-bottom: 15px;
   background: #ffffff;
   border: 1px solid #dedede;
@@ -26,13 +26,30 @@ a {
   border-radius: 10px;
 }
 
-.containerGambarKecil {
-  padding: 0px;
+.ctnGambarKecil {
+  padding: 5px;
   width: 115px;
-  height: 115px;
   margin: 3px;
   background: #ffffff;
   border: 1px solid #dedede;
   box-sizing: border-box;
   border-radius: 10px;
+}
+
+.billRightContainer {
+  background: #f8f8f8;
+  border-radius: 10px;
+}
+
+.ctnMain {
+  background: #ffffff;
+  border: 1px solid #d3d3d3;
+  box-sizing: border-box;
+  box-shadow: 0px 43px 350px rgba(0, 0, 0, 0.06),
+    0px 12.9632px 105.515px rgba(0, 0, 0, 0.0452747),
+    0px 5.38427px 43.8254px rgba(0, 0, 0, 0.0419759),
+    0px 1.94738px 15.8508px rgba(0, 0, 0, 0.0376014);
+  border-radius: 20px;
+  width: 1100px;
+  height: 725px;
 }
