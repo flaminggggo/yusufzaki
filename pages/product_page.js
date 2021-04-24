@@ -9,16 +9,16 @@ export default function product_page(){
         <OrganismNav />
         <center className="mt-20">
             <div className="row container mt-5">
-                <div className="col" style={{margin:'15px', justifyContent:'center', alignContent:'center',border:'0.2px solid white', borderRadius:'5px'}}>
-                    <img src="/products/prod_big.jpg"></img>
+                <div className="col">
+                    <img className="containerGambar" src="/products/prod_big.jpg"></img>
                     <div className="row">
-                        <div className="col">
+                        <div className="col containerGambarKecil">
                             <img src="/products/small1.jpg"></img>
                         </div>
-                        <div className="col">
+                        <div className="col containerGambarKecil">
                             <img src="/products/small2.jpg"></img>
                         </div>
-                        <div className="col">
+                        <div className="col containerGambarKecil">
                             <img src="/products/small3.jpg"></img>
                         </div>
                     </div>
