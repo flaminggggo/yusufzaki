@@ -15,8 +15,7 @@ export default function test() {
             <AtomText value="Peduli Digital Market" size="36px" weight="bold" />
             <AtomText
               value="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged"
-              size="14px"
-            />
+              size="14px"/>
             <div className="row mt-5">
               <div className="col-5">
                 <AtomButton
