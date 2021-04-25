@@ -3,9 +3,13 @@ import AtomButton from "../component/atoms/button";
 import MoleculeProductList from "../component/molecules/product_list";
 import OrganismNav from "../component/organisms/navbar";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Button, Navbar, Nav, Form, FormControl } from "react-bootstrap";
+import Link from 'next/link';
+import { product } from "../component/variables/product";
+import { useRouter } from 'next/router'
 
 export default function test() {
+  const route = useRouter();
+
   return (
     <>
       <OrganismNav />
@@ -51,38 +55,21 @@ export default function test() {
               <div className="col-12 text-left">
                 <AtomText value="Forever bag" size="24px" weight="bold" />
               </div>
-              <div className="col">
-                <MoleculeProductList
-                  image="/products/product_1.svg"
-                  name="Lavonte #A1294"
-                  category="Forever Shoes"
-                  price="$125.00"
-                />
-              </div>
-              <div className="col">
-                <MoleculeProductList
-                  image="/products/product_2.svg"
-                  name="Algolili #A1294"
-                  category="Forever Shoes"
-                  price="$45.00"
-                />
-              </div>
-              <div className="col">
-                <MoleculeProductList
-                  image="/products/product_3.svg"
-                  name="Lorevial #A1294"
-                  category="Forever Bag"
-                  price="$50.00"
-                />
-              </div>
-              <div className="col">
-                <MoleculeProductList
-                  image="/products/product_4.svg"
-                  name="Arcante #A1294"
-                  category="Forever Bag"
-                  price="$75.00"
-                />
-              </div>
+              {product.map((list_product, index) =>{
+                return(
+                  <>
+                    <div className="col">
+                      <MoleculeProductList
+                        image={list_product.gambarBarang[0]}
+                        name={list_product.namaBarang}
+                        category={list_product.desc}
+                        price={list_product.harga}
+                        href="/product_page/[id]"
+                      />
+                    </div>
+                  </>
+                );
+              })}
             </div>
           </center>
         </div>

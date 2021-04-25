@@ -1,8 +1,50 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AtomText from "../component/atoms/text";
 import { Form, Button,  } from "react-bootstrap";
+import Link from 'next/link'
+import { useState } from 'react'
+import { user } from '../component/variables/user';
 
 export default function signUp_page(){
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [confPassword, setConfPassword] = useState('');
+    const [brdrColor, setBrdrColor] = useState('');
+
+    const handleUsernameChange = e =>{
+        setUsername(e.target.value);
+    }
+
+    const handlePasswordChange = e =>{
+        setPassword(e.target.value);
+    }
+
+    const handleConfPasswordChange = e =>{
+        setConfPassword(e.target.value);
+    }
+
+    const handleRegister = () =>{
+        if(password == confPassword){
+            let check = user.filter(data => (data.username == username && data.password == password))
+            setBrdrColor('green');
+            if(!check.length){
+                let newuser = {
+                    username:username,
+                    password:password
+                }
+                alert("Register success");
+                user.push(newuser);
+                console.log(user);
+            } else {
+                alert("User already registered");
+                console.log(user);
+            }
+        } else{
+            alert("Passwords doesn't match")
+            setBrdrColor('red');
+        }
+    };
+
     return(
         <>
         <center>
@@ -18,20 +60,20 @@ export default function signUp_page(){
                     <Form style={{width:'395px'}}>
                         <Form.Group controlId="formSignUpEmail">
                             <Form.Label style={{color:'#9D9D9D', fontSize:'18px'}}>Username / Email</Form.Label>
-                            <Form.Control style={{height:'60px', borderRadius:'10px'}} type="email" placeholder="Enter email" />
+                            <Form.Control style={{height:'60px', borderRadius:'10px'}} type="text" placeholder="Enter username/email" onChange={handleUsernameChange}/>
                         </Form.Group>
                         <Form.Group controlId="formSignUpPassword">
                             <Form.Label  style={{color:'#9D9D9D', fontSize:'18px'}}>Password</Form.Label>
-                            <Form.Control style={{height:'60px', borderRadius:'10px'}} type="password" placeholder="Password" />
+                            <Form.Control style={{height:'60px', borderRadius:'10px'}} type="password" placeholder="Password" onChange={handlePasswordChange}/>
                         </Form.Group>
                         <Form.Group controlId="formSignUpRePassword">
                             <Form.Label  style={{color:'#9D9D9D', fontSize:'18px'}}>Re-enter Password</Form.Label>
-                            <Form.Control style={{height:'60px', borderRadius:'10px'}} type="password" placeholder="Password" />
+                            <Form.Control style={{height:'60px', borderRadius:'10px', borderColor:`${brdrColor}`}} type="password" placeholder="Password"  onChange={handleConfPasswordChange}/>
                         </Form.Group>
-                        <Button style={{background:'#0086CF', color:'white', borderRadius:'10px', width:'395px', height:'50px', fontSize:'18px', marginBlock:'50px'}} type="submit">
+                        <Button style={{background:'#0086CF', color:'white', borderRadius:'10px', width:'395px', height:'50px', fontSize:'18px', marginBlock:'50px'}} onClick={handleRegister}>
                             Register
                         </Button>
-                        <p style={{color:'#9D9D9D', fontSize:'18px'}}>Already have an account? <span style={{color:'#0086CF', fontSize:'18px'}}>Sign In</span></p>
+                        <p style={{color:'#9D9D9D', fontSize:'18px'}}>Already have an account? <Link href="/login_page"><span style={{color:'#0086CF', fontSize:'18px', cursor:'pointer'}}>Sign In</span></Link></p>
                     </Form>
                     </div>
                 </div>

@@ -26,7 +26,7 @@ export default function billing_page(){
                                 </Form.Group>
                                 <Form.Group controlId="formPhoneNum">
                                     <Form.Label>Nomor Telepon</Form.Label>
-                                    <Form.Control type="number" placeholder="" />
+                                    <Form.Control type="text" placeholder="" />
                                 </Form.Group>
                             </Form>
                         </div>
