@@ -4,6 +4,7 @@ import { Form, Button,  } from "react-bootstrap";
 import Link from 'next/link'
 import { useState } from 'react'
 import { user } from '../component/variables/user';
+import { fetch_data } from '../component/variables/api'
 
 export default function signUp_page(){
     const [username, setUsername] = useState('');
@@ -25,20 +26,33 @@ export default function signUp_page(){
 
     const handleRegister = () =>{
         if(password == confPassword){
-            let check = user.filter(data => (data.username == username && data.password == password))
-            setBrdrColor('green');
-            if(!check.length){
-                let newuser = {
-                    username:username,
-                    password:password
-                }
-                alert("Register success");
-                user.push(newuser);
-                console.log(user);
-            } else {
-                alert("User already registered");
-                console.log(user);
-            }
+            let json = {
+                "action" : "save",
+                "table" : "tx_hdr_user",
+                "data" : [
+                    {
+                        "user_name":username,
+                        "user_password":password
+                    }
+                ]
+              }
+            fetch_data("POST", "http://localhost/samson/data", json).then(function (result) {
+                console.log(result);
+              });
+            // let check = user.filter(data => (data.username == username && data.password == password))
+            // setBrdrColor('green');
+            // if(!check.length){
+            //     let newuser = {
+            //         username:username,
+            //         password:password
+            //     }
+            //     alert("Register success");
+            //     user.push(newuser);
+            //     console.log(user);
+            // } else {
+            //     alert("User already registered");
+            //     console.log(user);
+            // }
         } else{
             alert("Passwords doesn't match")
             setBrdrColor('red');

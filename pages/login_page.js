@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { user } from '../component/variables/user';
 import { route } from 'next/dist/next-server/server/router';
+import { fetch_data } from '../component/variables/api'
 
 export default function login_page(){
     const [username, setUsername] = useState('');
@@ -21,17 +22,23 @@ export default function login_page(){
     }
 
     const handleLogin = () =>{
-        let check = user.filter(data => (data.username == username && data.password == password));
-        if(check.length == 0){
-            alert("username/password kosong");
-        } else {
-            if (check.length) {
-                alert("Login success");
-                router.push("/");
-            } else {
-                alert("username/password salah");
-            }
+        // let check = user.filter(data => (data.username == username && data.password == password));
+        let json = {
+            "action" : "login",
+            "table" : "tx_hdr_user",
+            "username" : username,
+            "password" : password
         }
+        fetch_data("POST", "http://localhost/samson/auth", json).then(function (result) {
+            if (result.success) {
+                alert(result.message);
+                router.push("/");
+                localStorage.setItem("user_id", JSON.stringify(result.data));
+            } else {
+                alert(result.message);
+            }
+              });
+        
     };
 
     return(
@@ -59,10 +66,11 @@ export default function login_page(){
                         </Form.Group>
                         <Form.Group controlId="formLoginCheckbox">
                             <Form.Check style={{color:'#9D9D9D'}} type="checkbox" label="Remember Me" />
-                        </Form.Group>
-                        <Button style={{background:'#0086CF', color:'white', borderRadius:'10px', width:'395px', height:'50px', fontSize:'18px'}} onClick={handleLogin}>
+                            <Button style={{background:'#0086CF', color:'white', borderRadius:'10px', width:'395px', height:'50px', fontSize:'18px'}} onClick={handleLogin}>
                             Login
-                        </Button>
+                            </Button>
+                        </Form.Group>
+                        
                     </Form>
                     <p style={{color:'#9D9D9D', fontSize:'18px', marginTop:'100px'}}>Don't have an account? <Link href="/signUp_page"><span style={{color:'#0086CF', fontSize:'18px', cursor:'pointer'}}>Sign Up</span></Link></p>
                     </div>

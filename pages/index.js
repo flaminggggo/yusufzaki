@@ -62,9 +62,11 @@ export default function test() {
                       <MoleculeProductList
                         image={list_product.gambarBarang[0]}
                         name={list_product.namaBarang}
-                        category={list_product.desc}
+                        category={list_product.category}
                         price={list_product.harga}
-                        href="/product_page/[id]"
+                        id={list_product.id}
+                        index={index}
+                        href="/product/[id]"
                       />
                     </div>
                   </>

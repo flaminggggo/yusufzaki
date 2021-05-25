@@ -1,12 +1,12 @@
 import AtomText from "../atoms/text";
 import { useRouter } from 'next/router';
 
-export default function product_list({ image, name, category, price, href }) {
+export default function product_list({ image, name, category, price, index, addCart, href }) {
   const router = useRouter();
   const handleClick = e =>{
     router.push({
       pathname: href,
-      query: {id: }
+      query: {id: e.target.id}
     })
   }
   

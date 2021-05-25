@@ -3,6 +3,8 @@ import { Nav, Navbar, Form, FormControl, Button} from 'react-bootstrap';
 import Link from 'next/link'
 
 export default function navbar(){
+    
+
     return(
         <Navbar style={{background:"#0086CF"}}>
             <Navbar.Brand>

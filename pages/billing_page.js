@@ -2,9 +2,17 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import AtomText from "../component/atoms/text";
 import AtomButton from "../component/atoms/button";
 import OrganismNav from "../component/organisms/navbar";
-import { Form, Button,  } from "react-bootstrap"
+import { Form, Button } from "react-bootstrap"
+import { useState } from 'react';
 
 export default function billing_page(){
+    const [details, setDetails] = useState({nama:'', email:'', nomor:'', keterangan:'', alamat:''})
+    
+    const handleDetails = e =>{
+        e.preventDefault();
+        console.log(details)
+    }
+
     return(
         <>
         <OrganismNav />
@@ -22,11 +30,11 @@ export default function billing_page(){
                             <Form>
                                 <Form.Group controlId="formName">
                                     <Form.Label>Nama</Form.Label>
-                                    <Form.Control type="text" placeholder="" />
+                                    <Form.Control type="text" placeholder="" onChange={e => setDetails({...details, nama: e.target.value})} value={details.nama}/>
                                 </Form.Group>
                                 <Form.Group controlId="formPhoneNum">
                                     <Form.Label>Nomor Telepon</Form.Label>
-                                    <Form.Control type="text" placeholder="" />
+                                    <Form.Control type="text" placeholder="" onChange={e => setDetails({...details, nomor: e.target.value})} value={details.nomor}/>
                                 </Form.Group>
                             </Form>
                         </div>
@@ -34,11 +42,11 @@ export default function billing_page(){
                             <Form>
                                 <Form.Group controlId="formEmail">
                                     <Form.Label >Email</Form.Label>
-                                    <Form.Control type="email" placeholder="" />
+                                    <Form.Control type="email" placeholder="" onChange={e => setDetails({...details, email: e.target.value})} value={details.email}/>
                                 </Form.Group>
                                 <Form.Group controlId="formInfo">
                                     <Form.Label>Keterangan</Form.Label>
-                                    <Form.Control type="text" placeholder="" />
+                                    <Form.Control type="text" placeholder="" onChange={e => setDetails({...details, keterangan: e.target.value})} value={details.keterangan}/>
                                 </Form.Group>
                             </Form>
                         </div>
@@ -48,7 +56,7 @@ export default function billing_page(){
                             <Form>
                                 <Form.Group controlId="formEmail">
                                     <Form.Label >Alamat</Form.Label>
-                                    <Form.Control type="text" as="textarea" rows={3} />
+                                    <Form.Control type="text" as="textarea" rows={3} onChange={e => setDetails({...details, alamat: e.target.value})} value={details.alamat}/>
                                 </Form.Group>
                             </Form>
                         </div>
@@ -72,7 +80,7 @@ export default function billing_page(){
                             </div>
                         </div>
                     </div>
-                    <Button style={{background:'#0086CF', width:'245px'}} type="submit">
+                    <Button style={{background:'#0086CF', width:'245px'}} type="submit" onClick={handleDetails}>
                         Pay
                     </Button>
                 </div>
